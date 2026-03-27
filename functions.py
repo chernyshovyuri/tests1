@@ -13,7 +13,6 @@ def calculate_sum(n: int | float) -> int | float | None:
 
     return (n * (n + start_number)) / 2
 
-print(calculate_sum(0))
 
 
 def count_words(text: str) -> int | None:
@@ -40,7 +39,6 @@ def count_words(text: str) -> int | None:
     return counter
 
 
-print(count_words('привет пока нормально'))
 
 
 def is_number(string: str) -> bool:
@@ -78,7 +76,7 @@ def unique(lst: list[int]) -> list[int] | None:
 
     return new_lst
 
-print(unique([1,2,2,2,3,3,3,4,4,4,4,]))
+
 
 
 
