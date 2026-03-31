@@ -50,6 +50,8 @@ class LibraryBook:
 
     def __ini__(self, title: str, author: str, publish_year: int):
         if not isinstance(title, str):  raise TypeError()
+        if not isinstance(author, str): raise TypeError()
+        if not isinstance(publish_year, int): raise TypeError()
 
 
         self.__title = title
@@ -60,11 +62,72 @@ class LibraryBook:
     def get_title(self) -> str:
         return self.__title
 
+
     def get_author(self) -> str:
         return self.__author
 
+
     def get_publish_year(self) -> int:
         return self.__publish_year
+
+
+    def __str__(self) -> str:
+        return f'Title:{self.__title}\nAuthor:{self.__author}\nPublish Year:{self.__publish_year}'
+
+
+    def try_rename(self, new_title: str) -> bool:
+
+        if new_title == self.__title:
+            return False
+
+        if new_title == '':
+            return False
+
+        self.__title = new_title
+
+        return True
+
+
+    def is_old(self, current_year: int) -> bool:
+        if not isinstance(current_year, int):
+            raise TypeError()
+
+        if current_year == 0:
+            raise ValueError()
+
+        result = current_year - self.get_publish_year()
+
+        if result > 50:
+            return True
+
+        return False
+
+    def age(self, current_year: int) -> int | float:
+        if not isinstance(current_year, int):
+            raise TypeError()
+
+        if current_year == 0:
+            raise ValueError()
+
+        if self.__publish_year > current_year:
+            raise ValueError()
+
+        result = current_year - self.get_publish_year()
+
+        return result
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
