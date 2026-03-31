@@ -6,14 +6,20 @@ class Temperature:
     __celsius: int
 
     def __init__(self, celsius: int):
+        if celsius == '':
+            raise ValueError()
+
         if not isinstance(celsius, int):
             raise TypeError()
+
+
 
         self.__celsius = celsius
 
 
     def get_value(self) -> int:
         return self.__celsius
+
 
 
     def to_fahrenheit(self) -> int | float:
