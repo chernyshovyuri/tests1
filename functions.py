@@ -22,8 +22,6 @@ def count_words(text: str) -> int | None:
     if len(text) == 0:
         return None
 
-    if text == '':
-        return None
 
     counter = 0
 
@@ -44,9 +42,6 @@ def count_words(text: str) -> int | None:
 def is_number(string: str) -> bool:
     if not isinstance(string, str):
         raise TypeError()
-
-    if string == '':
-        return False
 
 
     new_string = string.strip(', . - ! ? ')
