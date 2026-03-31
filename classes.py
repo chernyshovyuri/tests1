@@ -54,7 +54,7 @@ class LibraryBook:
     __author: str
     __publish_year: int
 
-    def __ini__(self, title: str, author: str, publish_year: int):
+    def __init__(self, title: str, author: str, publish_year: int):
         if not isinstance(title, str):  raise TypeError()
         if not isinstance(author, str): raise TypeError()
         if not isinstance(publish_year, int): raise TypeError()
