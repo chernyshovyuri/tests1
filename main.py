@@ -1,12 +1,11 @@
-from functions import calculate_sum, is_number, unique, count_words
+from functions import calculate_sum
+from viewer import App
 
 
 def main():
-    print(calculate_sum(0))
-    print(is_number('123'))
-    print(unique([1,2,2,2,3,3,3,4,4,4,4,]))
-    print(count_words('привет пока нормально'))
 
+    app = App(callback=calculate_sum)
+    app.mainloop()
 
 
 if __name__ == '__main__':

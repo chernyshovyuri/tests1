@@ -2,7 +2,7 @@ import customtkinter as CTk
 from PIL import Image
 import os
 
-from functions import calculate_sum
+
 
 
 class ImageLabel:
@@ -19,13 +19,14 @@ class ImageLabel:
 
 class App(CTk.CTk):
 
-    def __init__(self):
+    def __init__(self, callback):
         super().__init__()
 
-        self.geometry("600x500")
+        self.geometry("800x700")
         self.title("СуперОкно")
-        self.logo = ImageLabel.get('d.rak.jpg', 180, 180)
         self.resizable(width=True, height=True)
+        self.logo = ImageLabel.get('d.rak.jpg', 180, 180)
+        self.callback = callback
 
 
 
@@ -39,21 +40,35 @@ class App(CTk.CTk):
         self.thoughts.grid(row = 0, column=1, padx=(5, 20), pady=60, sticky="nw")
 
 
-        self.button = CTk.CTkButton(master=self, text='Calculate Summ', width= 150, command= self.set_funktion)
+        self.button = CTk.CTkButton(master=self, text='Calculate Summ', width= 150, command = self.clic_calculate)
         self.button.grid(row=1, column=0, padx=20, pady=20, sticky="w")
 
-    def set_funktion(self):
-        print(calculate_sum(10))
+
+        self.entry = CTk.CTkEntry(self, placeholder_text = "Введите число", width= 150)
+        self.entry.grid(row=2, column=0, padx=20, pady=20, sticky="w")
+
+        self.output = CTk.CTkLabel(self, text= '0', text_color= 'red', corner_radius= 15, font=("Arial", 16, "bold") )
+        self.output.grid(row=3, column=0, padx=20, pady=20, sticky="w")
+
+
+    def clic_calculate(self):
+
+        user_input = self.entry.get()
+        values = float(user_input)
+        result = self.callback(values)
+        self.output.configure(text = str(result))
 
 
 
 
 
 
-if __name__ == '__main__':
 
-    app = App()
-    app.mainloop()
+
+
+
+
+
 
 
 
